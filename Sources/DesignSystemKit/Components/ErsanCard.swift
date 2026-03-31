@@ -1,6 +1,7 @@
 import SwiftUI
 
 /// A container that renders a stylized card in the ErsanQ system.
+@MainActor
 public struct ErsanCard<Content: View>: View {
     private let content: Content
     private let isLoading: Bool
@@ -32,20 +33,23 @@ public struct ErsanCard<Content: View>: View {
     }
 }
 
+@MainActor
 private struct SkeletonLayer: View {
     @State private var phase: CGFloat = 0
     
     var body: some View {
-        LinearGradient(
-            colors: [.white.opacity(0.05), .white.opacity(0.15), .white.opacity(0.05)],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-        .opacity(0.6)
-        .offset(x: phase)
-        .onAppear {
-            withAnimation(.linear(duration: 1.5).repeatForever(autoreverses: false)) {
-                phase = 300
+        GeometryReader { geometry in
+            LinearGradient(
+                colors: [.white.opacity(0.05), .white.opacity(0.15), .white.opacity(0.05)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .opacity(0.6)
+            .offset(x: phase)
+            .onAppear {
+                withAnimation(.linear(duration: 1.5).repeatForever(autoreverses: false)) {
+                    phase = geometry.size.width
+                }
             }
         }
     }

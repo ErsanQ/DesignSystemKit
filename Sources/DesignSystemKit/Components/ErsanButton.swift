@@ -5,6 +5,7 @@ import UIKit
 #endif
 
 /// A premium button designed with the ErsanQ style.
+@MainActor
 public struct ErsanButton: View {
     private let title: String
     private let icon: String?
@@ -56,6 +57,7 @@ public struct ErsanButton: View {
     }
 }
 
+@MainActor
 private struct ErsanButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

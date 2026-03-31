@@ -1,11 +1,27 @@
 import SwiftUI
 
 /// A container that renders a stylized card in the ErsanQ system.
+///
+/// `ErsanCard` implements the ecosystem's glassmorphism style, complete with
+/// shadows, rounded corners, and a secondary surface filling. It also supports
+/// an integrated skeleton state for seamless loading transitions.
+///
+/// ## Usage
+/// ```swift
+/// ErsanCard(isLoading: viewModel.loading) {
+///     Text("Premium Content")
+/// }
+/// ```
 @MainActor
 public struct ErsanCard<Content: View>: View {
     private let content: Content
     private let isLoading: Bool
     
+    /// Creates a new ErsanCard instance.
+    ///
+    /// - Parameters:
+    ///   - isLoading: A boolean flag that toggles the skeleton loader overlay.
+    ///   - content: The SwiftUI views to display inside the card.
     public init(isLoading: Bool = false, @ViewBuilder content: () -> Content) {
         self.isLoading = isLoading
         self.content = content()
@@ -33,6 +49,7 @@ public struct ErsanCard<Content: View>: View {
     }
 }
 
+/// An internal shimmer layer used by ErsanCard during the loading state.
 @MainActor
 private struct SkeletonLayer: View {
     @State private var phase: CGFloat = 0

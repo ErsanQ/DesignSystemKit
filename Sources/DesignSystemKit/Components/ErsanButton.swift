@@ -4,7 +4,17 @@ import SwiftUI
 import UIKit
 #endif
 
-/// A premium button designed with the ErsanQ style.
+/// A premium, haptic-integrated button designed for the ErsanQ ecosystem.
+///
+/// `ErsanButton` provides a high-end interaction experience by combining
+/// brand-consistent gradients, glassmorphism borders, and native spring physics.
+///
+/// ## Usage
+/// ```swift
+/// ErsanButton("Get Started", icon: "arrow.right") {
+///     print("Tapped!")
+/// }
+/// ```
 @MainActor
 public struct ErsanButton: View {
     private let title: String
@@ -12,6 +22,13 @@ public struct ErsanButton: View {
     private let action: () -> Void
     private let isProminent: Bool
     
+    /// Creates a new ErsanButton instance.
+    ///
+    /// - Parameters:
+    ///   - title: The localized text displayed on the button.
+    ///   - icon: An optional SF Symbol name to show before the title.
+    ///   - isProminent: If true, uses the primary brand gradient. If false, uses a subtle surface.
+    ///   - action: The closure to execute when the button is tapped.
     public init(_ title: String, icon: String? = nil, isProminent: Bool = true, action: @escaping () -> Void) {
         self.title = title
         self.icon = icon
@@ -57,6 +74,7 @@ public struct ErsanButton: View {
     }
 }
 
+/// The internal button style that handles pressing animations for ErsanQ components.
 @MainActor
 private struct ErsanButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {

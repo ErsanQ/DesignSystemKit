@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 #if canImport(UIKit)
@@ -83,3 +84,4 @@ private struct ErsanButtonStyle: ButtonStyle {
             .animation(.interactiveSpring(response: 0.3, dampingFraction: 0.6), value: configuration.isPressed)
     }
 }
+#endif

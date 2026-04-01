@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// A container that renders a stylized card in the ErsanQ system.
@@ -71,3 +72,4 @@ private struct SkeletonLayer: View {
         }
     }
 }
+#endif

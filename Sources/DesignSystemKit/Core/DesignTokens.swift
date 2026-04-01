@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// The central source of truth for the ErsanQ Design System.
@@ -61,3 +62,4 @@ public enum Ersan {
         )
     }
 }
+#endif

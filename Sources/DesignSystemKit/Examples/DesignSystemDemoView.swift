@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 import DesignSystemKit
 
@@ -98,3 +99,4 @@ struct TokenEntry: View {
 #Preview {
     DesignSystemDemoView()
 }
+#endif

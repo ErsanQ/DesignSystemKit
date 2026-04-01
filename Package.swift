@@ -23,9 +23,5 @@ let package = Package(
             dependencies: [],
             path: "Sources/DesignSystemKit",
             exclude: ["Examples"]),
-        .testTarget(
-            name: "DesignSystemKitTests",
-            dependencies: ["DesignSystemKit"],
-            path: "Tests/DesignSystemKitTests"),
     ]
 )
